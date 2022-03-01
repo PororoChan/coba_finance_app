@@ -7,17 +7,17 @@ import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:coba_finance_app/colors/color.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginPageState extends State<LoginPage> {
   //all object var
-  Random random = Random();
   bool bol = false;
   bool pass = true;
   StartBg _bg = StartBg();
@@ -319,7 +319,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     NeumorphicButton(
                                       onPressed: () {
                                         setState(() {
-                                          Navigator.pushNamed(context, "/home");
+                                          Get.toNamed("/home");
                                         });
                                       },
                                       padding: EdgeInsets.symmetric(
@@ -354,7 +354,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          Get.back();
                         },
                         icon: Icon(
                           Icons.arrow_back_ios,
@@ -394,7 +394,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.pushNamed(context, "/regist");
+                                Get.toNamed("/regist");
                               },
                               child: Text("Sign Up",
                                   style: TextStyle(

@@ -1,6 +1,7 @@
 import 'package:coba_finance_app/views/notifPage.dart';
 import 'package:coba_finance_app/views/settingsPage.dart';
 import 'package:coba_finance_app/views/walletPage.dart';
+import 'package:coba_finance_app/views/widgets/sidebarScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:coba_finance_app/colors/color.dart';
 import 'package:flutter/services.dart';
@@ -15,16 +16,17 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-//var
-int _pageIndex = 0;
+var indexPage = 0;
 
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var layout = MediaQuery.of(context);
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+    final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
 
     return Scaffold(
+      key: _key,
+      drawer: SideBar(),
       extendBody: true,
       body: SafeArea(
         bottom: false,
@@ -49,11 +51,11 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           IconButton(
                               onPressed: () {
-                                print("menu");
+                                _key.currentState!.openDrawer();
                               },
                               icon: Icon(
                                 Icons.menu,
-                                size: 38.sp,
+                                size: 30.sp,
                                 color: softWhite,
                               )),
                           NeumorphicText(
@@ -139,12 +141,12 @@ class _HomePageState extends State<HomePage> {
             ),
             Positioned(
               top: 175.h,
-              left: 32.w,
-              right: 32.w,
+              left: 35.w,
+              right: 35.w,
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                    height: 185.h,
+                    height: 180.h,
                     width: layout.size.width,
                     decoration: BoxDecoration(
                       color: blurWhite,
@@ -310,32 +312,18 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Positioned(
-                top: 380.h,
+                top: 390.h,
                 left: 28.w,
                 right: 28.w,
+                bottom: 0.h,
                 child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
                   child: Container(
-                      height: layout.size.height,
+                      height: 500.h,
                       width: layout.size.width,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              NeumorphicText("Recharge & Bill Payments",
-                                  style: NeumorphicStyle(
-                                    depth: 1,
-                                    lightSource: LightSource.left,
-                                    color: softDark,
-                                  ),
-                                  textStyle: NeumorphicTextStyle(
-                                    fontFamily: "Cool",
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 14.sp,
-                                  ))
-                            ],
-                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -630,9 +618,131 @@ class _HomePageState extends State<HomePage> {
                               )
                             ],
                           ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              left: 15.w,
+                              right: 15.w,
+                            ),
+                            child: Container(
+                              height: 150.h,
+                              width: layout.size.width,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                    colors: [
+                                      blPurple,
+                                      softPurple,
+                                    ]),
+                                borderRadius: BorderRadius.circular(18.r),
+                              ),
+                              child: Stack(children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.all(20.0),
+                                  child: Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        "Penawaran Spesial!",
+                                        style: TextStyle(
+                                            color: softWhite,
+                                            fontFamily: "Cool",
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16.sp),
+                                      )),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    left: 18.w,
+                                  ),
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      "Selesaikan transaksi pertama \ndengan diskon 60%",
+                                      style: TextStyle(
+                                        fontFamily: "Cool",
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14.sp,
+                                        color: softWhite.withOpacity(0.7),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.all(20.0),
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Image(
+                                      image: AssetImage(
+                                        "assets/images/gift-box.png",
+                                      ),
+                                      width: 70.w,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 10.0, bottom: 18.0, top: 10.0),
+                                  child: Align(
+                                    alignment: Alignment.bottomLeft,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          width: 50.w,
+                                          height: 25.h,
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: blurWhite,
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: softWhite
+                                                      .withOpacity(0.6),
+                                                  blurRadius: 5,
+                                                  spreadRadius: 2,
+                                                  offset: Offset(1.0, 0.0),
+                                                )
+                                              ]),
+                                          child: IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: blPurple,
+                                              size: 10.0,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ]),
+                            ),
+                          )
                         ],
                       )),
-                ))
+                )),
+            Positioned(
+              top: 370.h,
+              left: 28.w,
+              right: 28.w,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  NeumorphicText("Recharge & Bill Payments",
+                      style: NeumorphicStyle(
+                        depth: 1,
+                        lightSource: LightSource.left,
+                        color: softDark,
+                      ),
+                      textStyle: NeumorphicTextStyle(
+                        fontFamily: "Cool",
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14.sp,
+                      ))
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -644,7 +754,8 @@ class _HomePageState extends State<HomePage> {
               shape: CircularNotchedRectangle(),
               notchMargin: 3.w,
               child: BottomNavigationBar(
-                currentIndex: _pageIndex,
+                onTap: _tap,
+                currentIndex: indexPage,
                 type: BottomNavigationBarType.fixed,
                 backgroundColor: Colors.transparent,
                 elevation: 0,
@@ -691,50 +802,45 @@ class _HomePageState extends State<HomePage> {
                     label: "Settings",
                   ),
                 ],
-                onTap: (int index) {
-                  setState(() {
-                     _pageIndex = index;
-                    switch (index) {
-                      case 0:
-                        Get.to(HomePage());
-                        break;
-                      case 1:
-                        Get.to(WalletPage());
-                        break;
-                      case 2:
-                        Get.to(Notifications());
-                        break;
-                      case 3:
-                        Get.to(SettingsPage());
-                        break;
-                    }
-                  });
-                },
               ))),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        elevation: 0,
-        splashColor: softWhite.withOpacity(0.4),
+        elevation: 1,
+        splashColor: softDark.withOpacity(0.5),
         onPressed: () {},
         child: Container(
           height: 60.h,
           width: 60.w,
           decoration: BoxDecoration(
               shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: softDark.withOpacity(0.3),
+                  spreadRadius: 1,
+                  blurRadius: 0,
+                  offset: Offset(1, 0.0),
+                )
+              ],
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    ltBlue,
-                    softPurple,
+                    softWhite,
+                    blurWhite,
                   ])),
           child: Icon(
             Icons.qr_code_scanner_outlined,
-            color: softWhite,
+            color: softDark.withOpacity(0.8),
             size: 30.sp,
           ),
         ),
       ),
     );
+  }
+
+  void _tap(int index) {
+    setState(() {
+      indexPage = index;
+    });
   }
 }

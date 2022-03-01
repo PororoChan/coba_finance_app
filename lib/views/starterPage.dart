@@ -1,10 +1,12 @@
-import 'package:coba_finance_app/views/loginScreen.dart';
+import 'package:coba_finance_app/views/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:coba_finance_app/colors/color.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class StarterPage extends StatefulWidget {
   const StarterPage({Key? key}) : super(key: key);
@@ -231,8 +233,7 @@ class _StarterPageState extends State<StarterPage> {
                                           ),
                                           NeumorphicButton(
                                               onPressed: () {
-                                                Navigator.pushNamed(
-                                                    context, "/login");
+                                                Get.toNamed("/login");
                                               },
                                               style: NeumorphicStyle(
                                                 depth: 1,
