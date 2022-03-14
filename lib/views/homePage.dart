@@ -25,8 +25,8 @@ class _HomePageState extends State<HomePage> {
     final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
 
     return Scaffold(
-      key: _key,
       drawer: SideBar(),
+      key: _key,
       extendBody: true,
       body: SafeArea(
         bottom: false,
@@ -807,7 +807,9 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         elevation: 1,
         splashColor: softDark.withOpacity(0.5),
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed("/scan");
+        },
         child: Container(
           height: 60.h,
           width: 60.w,

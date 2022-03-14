@@ -6,6 +6,7 @@ Color blPurple = Color(0xFF4155D3);
 Color softPurple = Color(0xFF541CC7);
 Color softWhite = Color(0xFFEFEFEF);
 Color blurWhite = Color(0xFFF9F9F9);
+Color whitePlus = Color(0xFFFFFFFF);
 
 //dark-layers
 Color softGrey = Color(0xFF464646);
@@ -19,3 +20,10 @@ Color orgBalls = Color(0xFFFF8700);
 
 //bottom-navbar
 Color btBar = Color(0xFF264653);
+
+//scan-page-bg
+Color scan1 = Color(0xFF123F69);
+Color scan2 = Color(0xFF395674);
+Color scan3 = Color(0xFF2E3758);
+Color scan4 = Color(0xFF132243);
+Color scan5 = Color(0xFF0C112F);
