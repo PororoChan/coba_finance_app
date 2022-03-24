@@ -833,7 +833,7 @@ class _HomePageState extends State<HomePage> {
           child: Icon(
             Icons.qr_code_scanner_outlined,
             color: softDark.withOpacity(0.8),
-            size: 30.sp,
+            size: 26.sp,
           ),
         ),
       ),
